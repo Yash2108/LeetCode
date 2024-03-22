@@ -4,9 +4,6 @@ class Solution:
         s=''.join([i for i in s if i not in punctuation and i!=' ']).lower()
         i=0
         j=len(s)-1
-        mid=len(s)//2
-        # if j==-1:
-        #     return True
         while i<=j:
             print(i, j)
             if s[i]!=s[j]:
