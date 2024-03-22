@@ -7,7 +7,7 @@ class Solution:
         mid=len(s)//2
         # if j==-1:
         #     return True
-        while i<=mid and j>=mid:
+        while i<=j:
             print(i, j)
             if s[i]!=s[j]:
                 return False
