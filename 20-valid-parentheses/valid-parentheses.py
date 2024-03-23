@@ -12,7 +12,7 @@ class Solution:
             else:
                 if len(stack)==0:
                     return False
-                if mapping[bracket]==stack[-1]:
+                elif mapping[bracket]==stack[-1]:
                     stack.pop(-1)
                 else:
                     return False
