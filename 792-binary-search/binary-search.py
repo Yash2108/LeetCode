@@ -5,7 +5,6 @@ class Solution:
 
         while start<=end:
             middle = start + (end-start)//2
-            print(start, middle, end, nums[middle])
             if nums[middle]==target:
                 return middle
             else:
