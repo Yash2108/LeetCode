@@ -9,47 +9,98 @@ root.left.right=Tree(5  )
 root.right.left=Tree(6)
 root.right.right=Tree(7)
 
-def inOrderTraversal(root):
+def printInOrder(root):
     '''
     Left -> Self -> Right
     '''
     if root:
-        inOrderTraversal(root.left)
+        printInOrder(root.left)
         print(root.value, end=' -> ')
-        inOrderTraversal(root.right)
+        printInOrder(root.right)
 
-def preOrderTraversal(root):
+def printPreOrder(root):
     '''
     Self -> Left -> Right
     '''
     if root:
         print(root.value, end=' -> ')
-        inOrderTraversal(root.left)
-        inOrderTraversal(root.right)
+        printPreOrder(root.left)
+        printPreOrder(root.right)
 
-def postOrderTraversal(root):
+def printPostOrder(root):
     '''
     Left -> Right -> Self
     '''
     if root:
-        inOrderTraversal(root.left)
-        inOrderTraversal(root.right)
+        printPostOrder(root.left)
+        printPostOrder(root.right)
         print(root.value, end=' -> ')
 
-def BFS(root, queue=[]):
+def printBFS(root, queue=[]):
     if root:
         print(root.value, end=' -> ')
-        # visited.append(root.value)
         queue.append(root.left)
         queue.append(root.right)
         if queue:
             root=queue.pop(0)
-            BFS(root, queue)
+            printBFS(root, queue)
 
-inOrderTraversal(root)
+
+
+def inOrderTraversal(root, visited=[]):
+    '''
+    Left -> Self -> Right
+    '''
+    if root:
+        inOrderTraversal(root.left, visited)
+        visited.append(root.value)
+        inOrderTraversal(root.right, visited)
+    return visited
+
+def preOrderTraversal(root, visited=[]):
+    '''
+    Self -> Left -> Right
+    '''
+    if root:
+        visited.append(root.value)
+        preOrderTraversal(root.left, visited)
+        preOrderTraversal(root.right, visited)
+    return visited
+
+def postOrderTraversal(root, visited=[]):
+    '''
+    Left -> Right -> Self
+    '''
+    if root:
+        postOrderTraversal(root.left, visited)
+        postOrderTraversal(root.right, visited)
+        visited.append(root.value)
+    return visited
+
+def BFSTraversal(root, queue=[], visited=[]):
+    if root:
+        visited.append(root.value)
+        queue.append(root.left)
+        queue.append(root.right)
+        if queue:
+            root=queue.pop(0)
+            BFSTraversal(root, queue, visited)
+    return visited
+
+
+printInOrder(root)
 print()
-preOrderTraversal(root)
+printPreOrder(root)
 print()
-postOrderTraversal(root)
+printPostOrder(root)
 print()
-BFS(root)
+printBFS(root)
+print()
+
+
+
+
+print(inOrderTraversal(root))
+print(preOrderTraversal(root))
+print(postOrderTraversal(root))
+print(BFSTraversal(root))
