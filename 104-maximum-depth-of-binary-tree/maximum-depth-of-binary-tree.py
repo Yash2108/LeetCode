@@ -6,10 +6,10 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        ls=[root]
         depth=0
 
         if root:
+            ls=[root]
             while ls:
                 sublist=[]
                 for temp in ls:
