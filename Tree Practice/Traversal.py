@@ -1,13 +1,5 @@
-from Tree import Tree
+from Tree import *
 
-
-root=Tree(1)
-root.left=Tree(2)
-root.right=Tree(3)
-root.left.left=Tree(4)
-root.left.right=Tree(5  )
-root.right.left=Tree(6)
-root.right.right=Tree(7)
 
 def printInOrder(root):
     '''
@@ -86,6 +78,17 @@ def BFSTraversal(root, queue=[], visited=[]):
             root=queue.pop(0)
             BFSTraversal(root, queue, visited)
     return visited
+
+
+
+
+root=Tree(1)
+insert(root, 2)
+insert(root, 3)
+insert(root, 4)
+insert(root, 5)
+insert(root, 6)
+insert(root, 7)
 
 
 printInOrder(root)
