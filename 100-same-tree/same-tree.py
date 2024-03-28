@@ -23,6 +23,4 @@ class Solution:
         
         p_nodes=dfs(p, [])
         q_nodes=dfs(q, [])
-        print(p_nodes)
-        print(q_nodes)
         return p_nodes==q_nodes
