@@ -13,27 +13,21 @@ class Solution:
 
             if not node:
                 return [ True, 0]
-            
+    
             l=getDepth(node.left)
-            print('left', l, node.val)
             if not l[0]:
                 return [False, l[1]+1]
 
             r=getDepth(node.right)
-            print('right', r, node.val)
             if not r[0]:
                 return [False, r[1]+1]
 
-            diff=abs(r[1]-l[1])
-            print('diff', diff, node.val)
             height=max(l[1], r[1])
-            if diff>1:
+            if abs(r[1]-l[1])>1:
                 return [False, height+1]
             return [True, height+1]
 
-        res=getDepth(root)
-        print('res', res)
-        if not res[0]:
+        if not getDepth(root)[0]:
             return False
         else:
             return True
