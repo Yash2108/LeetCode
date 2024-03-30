@@ -1,11 +1,11 @@
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         n=len(cost)-1
-        dp={n:cost[n], n-1:cost[n-1]}
+        step_1, step_2 = cost[n], cost[n-1]
         step=n-2
         while step>=0:
-            dp[step]=min(dp[step+1], dp[step+2])+cost[step]
+            step_new = min(step_1, step_2)+cost[step]
+            step_1, step_2 = step_2, step_new
             step-=1
-            # print(dp)
-        return dp[0] if dp[0]<dp[1] else dp[1]
+        return step_1 if step_1<step_2 else step_2
 
