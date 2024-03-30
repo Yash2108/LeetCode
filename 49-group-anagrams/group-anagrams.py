@@ -14,5 +14,4 @@ class Solution:
                 anagram_dict[chara_count_str].append(string)
             else:
                 anagram_dict[chara_count_str]=[string]
-        print(anagram_dict)
         return anagram_dict.values()
