@@ -19,7 +19,4 @@ class Solution:
                 output[i] = prefix[i-1]
             else:
                 output[i] = prefix[i-1]*postfix[i+1]
-
-        print(prefix)
-        print(postfix)
         return output
