@@ -1,6 +1,6 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        seqs=[]
+        max_len=0
         num_set=set(nums)
         for num in nums:
             if num-1 not in num_set:
@@ -11,9 +11,6 @@ class Solution:
                     # add next_num to seq
                     seq.append(next_num)
                     next_num+=1
-                seqs.append(len(seq))
-        if seqs:
-            return max(seqs)
-            # return max([len(i) for i in seqs])
-        else:
-            return 0
+                max_len=max(max_len, len(seq))
+
+        return max_len
