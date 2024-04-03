@@ -12,7 +12,7 @@ class Solution:
                 if nums[start_point]+nums[end_point]==-num:
                     triplets.append((num, nums[start_point], nums[end_point]))
                     start_point+=1
-                    while start_point<len(nums) and nums[start_point-1]==nums[start_point]:
+                    while start_point<end_point and nums[start_point-1]==nums[start_point]:
                         start_point+=1
                 elif nums[start_point]+nums[end_point]<-num:
                     start_point+=1
