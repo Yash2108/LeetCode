@@ -18,4 +18,4 @@ class Solution:
                     start_point+=1
                 else:
                     end_point-=1
-        return set(triplets)
+        return triplets
