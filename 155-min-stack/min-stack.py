@@ -9,8 +9,8 @@ class MinStack:
         self.min=min(self.min, val)
 
     def pop(self) -> None:
-        popped=self.stack.pop(-1)
-        self.min=popped[1]
+        self.min=self.stack[-1][1]
+        self.stack.pop(-1)
         
     def top(self) -> int:
         return self.stack[-1][0]
