@@ -4,9 +4,6 @@ class Solution:
         stack=[]
 
         for idx, val in enumerate(temperatures):
-            if idx==0:
-                stack.append([idx, val])
-                continue
             while stack and val>stack[-1][1]:
                 temp=stack.pop(-1)
                 output[temp[0]] = idx-temp[0]
