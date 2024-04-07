@@ -14,6 +14,6 @@ class Solution:
                     stack.append(operand1-operand2)
                 elif token == '*':
                     stack.append(operand1*operand2)
-                elif token == '/':
+                else:
                     stack.append(int(operand1/operand2))
         return stack[-1]
