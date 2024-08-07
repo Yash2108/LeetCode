@@ -1,4 +1,5 @@
 # Definition for singly-linked list.
+import heapq
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -10,16 +11,16 @@ class Solution:
         if len(lists)==0:
             return 
 
+        heap = []
+        heapq.heapify(heap)
+        for ls in lists:
+            while ls:
+                heapq.heappush(heap, ls.val)
+                ls=ls.next
+
         initial_node=ListNode()
         new_node=initial_node
-        while lists:
-            only_vals=[ls.val for ls in lists]
-            minimum_idx=only_vals.index(min(only_vals))
-            new_node.next = ListNode(val=lists[minimum_idx].val)
+        while heap:
+            new_node.next=ListNode(val=heapq.heappop(heap))
             new_node=new_node.next
-            if lists[minimum_idx].next:
-                lists[minimum_idx]=lists[minimum_idx].next
-            else:
-                lists.pop(minimum_idx)
-        
         return initial_node.next
