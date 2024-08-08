@@ -3,8 +3,8 @@ class Solution:
         
         courses={i:[] for i in range(numCourses)}
         for course in prerequisites:
-            if course[0]==course[1]:
-                return False
+            # if course[0]==course[1]:
+            #     return False
             courses[course[0]].append(course[1])
         
         visited=[]
