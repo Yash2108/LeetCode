@@ -1,12 +1,11 @@
-import heapq
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        count_dict=defaultdict(int)
+        mapping={}
         for num in nums:
-            count_dict[num]+=1
-        heap=[(-val, key) for key, val in count_dict.items()]
-        heapq.heapify(heap)
-        output=[]
-        for _ in range(k):
-            output.append(heapq.heappop(heap)[1])
-        return output
+            if num in mapping:
+                mapping[num]+=1
+            else:
+                mapping[num]=1
+
+        sorted_nums = sorted(mapping.items(), key=lambda k: k[1], reverse=True)
+        return [num[0] for num in sorted_nums[:k]]
