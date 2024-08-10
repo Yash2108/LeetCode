@@ -11,4 +11,4 @@ class Solution:
             chara_count_str=''.join([ chr(idx+97)+str(count) for idx, count in enumerate(chara_count)])
             anagram_dict[chara_count_str].append(string)
 
-        return anagram_dict.values()
+        return(anagram_dict.values())
