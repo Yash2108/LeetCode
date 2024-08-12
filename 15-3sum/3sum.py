@@ -17,7 +17,6 @@ class Solution:
 
                 if nums[left] + nums[right] + num == 0:
                     triplets.add((nums[left], nums[right], num))
-                    # break
                     left+=1
                     right-=1
                     while nums[left] == nums[left-1] and left<right:
