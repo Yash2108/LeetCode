@@ -6,6 +6,12 @@ class Solution:
 
         for idx, num in enumerate(nums):
 
+            if num > 0:
+                continue
+
+            if idx > 0 and num == nums[idx-1]:
+                continue
+
             left, right = idx+1, len(nums)-1
             while left < right:
 
