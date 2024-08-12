@@ -1,10 +1,13 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        alphabets='abcdefghijklmnopqrstuvwxyz0123456789'
         s=s.lower()
-        final_str = ''.join([i for i in s if i in alphabets])
+        s=''.join(i for i in s if i in 'abcdefghijklmonpqrstuvwxyz0123456789')
 
-        if final_str==final_str[::-1]:
-            return True
-        else:
-            return False
+        left, right = 0, len(s)-1
+        print(s)
+        while left<=right:
+            if s[left]!=s[right]:
+                return False
+            left+=1
+            right-=1
+        return True
