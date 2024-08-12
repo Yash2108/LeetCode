@@ -4,7 +4,6 @@ class Solution:
         s=''.join(i for i in s if i in 'abcdefghijklmonpqrstuvwxyz0123456789')
 
         left, right = 0, len(s)-1
-        print(s)
         while left<=right:
             if s[left]!=s[right]:
                 return False
