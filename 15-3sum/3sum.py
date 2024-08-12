@@ -3,7 +3,6 @@ class Solution:
         triplets=set()
         nums=sorted(nums)
 
-
         for idx, num in enumerate(nums):
 
             if num > 0:
