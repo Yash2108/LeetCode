@@ -14,8 +14,7 @@ class Solution:
         for idx, num in enumerate(arr):
             count[num]-=1
             for i in range(idx):
-                first = arr[i]
-                last = target-num-first
-                if last in count:
+                last = target-num-arr[i]
+                if target-num-arr[i] in count:
                     answer = (answer+count[last])%(10**9+7)
         return answer            
