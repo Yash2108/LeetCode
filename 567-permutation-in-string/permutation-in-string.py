@@ -1,20 +1,15 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        window_size=len(s1)
-
-        s1_count = [0]*26
-
-        for i in s1:
-            s1_count[ord(i)-ord('a')]+=1
-        s1_count = ''.join([ chr(idx+ord('a'))+str(count) for idx, count in enumerate(s1_count)])
-
-        for i in range(len(s2)-window_size+1):
-            s2_count = [0]*26
-            for character in s2[i:i+window_size]:
-                s2_count[ord(character)-ord('a')]+=1
-            s2_count = ''.join([ chr(idx+ord('a'))+str(count) for idx, count in enumerate(s2_count)])
-
-            if  s2_count == s1_count:
+        chara_count=[0 for _ in range(26)]
+        for chara in s1:
+            chara_count[ord(chara)-ord('a')]+=1
+        chara_count = ''.join([chr(ord('a')+idx)+str(cnt) for idx, cnt in enumerate(chara_count)])
+        
+        for i in range(len(s2)-len(s1)+1):
+            temp=[0 for _ in range(26)]
+            for chara in s2[i:i+len(s1)]:
+                temp[ord(chara)-ord('a')]+=1
+            temp = ''.join([chr(ord('a')+idx)+str(cnt) for idx, cnt in enumerate(temp)])
+            if temp==chara_count:
                 return True
-
         return False
