@@ -5,17 +5,24 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sameTree(self, s, t):
-        if not s and not t:
-            return True
-        if s and t and s.val==t.val:
-            return self.sameTree(s.left, t.left) and self.sameTree(s.right, t.right)
-        return False
-
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-            if not subRoot: return True
-            if not root: return False
-
-            if self.sameTree(root, subRoot): return True
-
-            return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+        
+        def dfs(root, visited=[]):
+            if not root:
+                visited.append(root)
+                return visited
+            visited.append(root.val)
+            visited=dfs(root.left, visited)
+            visited=dfs(root.right, visited)
+            return visited
+        
+        toVisit=[root]
+        subRoot_nodes=dfs(subRoot)
+        while toVisit:
+            node=toVisit.pop(0)
+            if node:
+                if dfs(node, [])==subRoot_nodes:
+                    return True
+                toVisit.append(node.left)                
+                toVisit.append(node.right)                
+        return False
