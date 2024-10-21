@@ -20,9 +20,4 @@ class Solution:
             if temp:
                 result.append(temp[-1].val)
             visited=temp
-            # result.append(root.val)
-            # if root.right:
-            #     root=root.right
-            # else:
-            #     root=root.left
         return result
