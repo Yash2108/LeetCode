@@ -21,12 +21,3 @@ class Solution:
                 new_nodes=node+[node[-1].right]
                 toVisit.append(new_nodes)
         return len(visited)
-'''
-
-maintain 2 lists: tovisit and visited
-visited will have the result stored as lists
-toVisit will store the next item to check as well as its history
-loop while toVisit has something
-update
-
-'''
