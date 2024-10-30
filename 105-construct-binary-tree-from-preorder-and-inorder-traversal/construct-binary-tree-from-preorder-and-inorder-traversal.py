@@ -13,10 +13,8 @@ class Solution:
         if preorder:
             root = TreeNode(preorder[0])
             loc_root=inorder.index(root.val)
-            left=self.buildTree(preorder[1:1+loc_root], inorder[:loc_root])
-            right=self.buildTree(preorder[1+loc_root:], inorder[1+loc_root:])
-            root.left = left
-            root.right = right 
+            root.left = self.buildTree(preorder[1:1+loc_root], inorder[:loc_root])
+            root.right = self.buildTree(preorder[1+loc_root:], inorder[1+loc_root:]) 
             return root
         else:
             return
