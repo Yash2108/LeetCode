@@ -43,4 +43,3 @@ class Solution:
                     node=node.left 
             ancestors.pop(0)
         
-        # print([i.val for i in ancestors])
