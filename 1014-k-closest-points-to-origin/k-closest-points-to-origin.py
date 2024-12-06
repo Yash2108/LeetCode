@@ -1,12 +1,11 @@
 from heapq import heapify, heappush, heappop
-import math
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         heap=[]
         heapify(heap)
 
         for x, y in points:
-            dist=math.sqrt(x**2+y**2)
+            dist=(x**2+y**2)**0.5
             if len(heap)<k:
                 heappush(heap, [-dist, x, y])
             else:
