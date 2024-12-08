@@ -33,7 +33,6 @@ class Solution:
 
         while ancestors:
             node=ancestors[0]
-
             while node:
                 if node.val==q.val:
                     return ancestors[0]
