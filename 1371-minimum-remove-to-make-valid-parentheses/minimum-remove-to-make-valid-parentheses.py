@@ -7,10 +7,8 @@ class Solution:
             '}':'{'
         }
         alphabets='abcdefghijklmnopqrstuvwxyz'
-        output=''
         removals=[]
         for idx, chara in enumerate(s):
-            output+=chara
             if chara in alphabets:
                 continue
             if chara not in mapping:
@@ -25,10 +23,11 @@ class Solution:
                     removals.append(idx)
 
         while stack:
-            bracket= stack.pop(-1)
-            removals.append(bracket[1])
-        final_output=[]
+            removals.append(stack.pop(-1)[1])
+
+        output=[]
+
         for idx in range(len(s)):
             if idx not in removals:
-                final_output.append(s[idx])
-        return ''.join(final_output)
+                output.append(s[idx])
+        return ''.join(output)
