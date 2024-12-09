@@ -23,7 +23,6 @@ class Solution:
                     stack.pop(-1)
                 else:
                     removals.append(idx)
-        print(output)
 
         while stack:
             bracket= stack.pop(-1)
