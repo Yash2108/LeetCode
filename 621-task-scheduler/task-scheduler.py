@@ -1,16 +1,17 @@
+from collections import Counter
 from heapq import heapify, heappop, heappush
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
         cycles=0
         heap=[]
         heapify(heap)
-        counter={}
-
-        for task in tasks:
-            if task in counter:
-                counter[task]+=1
-            else:
-                counter[task]=1
+        # counter={}
+        counter = Counter(tasks)
+        # for task in tasks:
+        #     if task in counter:
+        #         counter[task]+=1
+        #     else:
+        #         counter[task]=1
         
         for task in counter:
             heappush(heap, [-counter[task], task])
