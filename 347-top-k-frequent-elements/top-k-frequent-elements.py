@@ -6,5 +6,5 @@ class Solution:
                 num_freq[num]+=1
             else:
                 num_freq[num]=1
-        sorted_freq=list(sorted(list(num_freq.items()), key = lambda x:x[1], reverse=True))[:k]
+        sorted_freq=sorted(num_freq.items(), key = lambda x:x[1], reverse=True)[:k]
         return [i[0] for i in sorted_freq]
