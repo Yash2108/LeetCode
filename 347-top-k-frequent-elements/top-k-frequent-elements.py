@@ -1,3 +1,4 @@
+from heapq import heapify, heappush, heappop
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         num_freq={}
@@ -6,5 +7,10 @@ class Solution:
                 num_freq[num]+=1
             else:
                 num_freq[num]=1
-        sorted_freq=sorted(num_freq.items(), key = lambda x:x[1], reverse=True)[:k]
-        return [i[0] for i in sorted_freq]
+        heapify_ls=[]
+        heapify(heapify_ls)
+        for num in num_freq:
+            heappush(heapify_ls, [num_freq[num], num])
+            if len(heapify_ls)>k:
+                heappop(heapify_ls)
+        return [i[1] for i in heapify_ls[::-1]]
