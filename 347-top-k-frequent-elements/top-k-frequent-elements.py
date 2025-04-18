@@ -1,11 +1,10 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        mapping={}
+        num_freq={}
         for num in nums:
-            if num in mapping:
-                mapping[num]+=1
+            if num in num_freq:
+                num_freq[num]+=1
             else:
-                mapping[num]=1
-
-        sorted_nums = sorted(mapping.items(), key=lambda k: k[1], reverse=True)
-        return [num[0] for num in sorted_nums[:k]]
+                num_freq[num]=1
+        sorted_freq=list(sorted(list(num_freq.items()), key = lambda x:x[1], reverse=True))[:k]
+        return [i[0] for i in sorted_freq]
