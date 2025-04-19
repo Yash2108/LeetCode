@@ -1,15 +1,22 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        longest=0
-        start_point=0
-        temp_str=''
+        '''
+        longest variable
+        two pointers
+        one pointer indicates start of substring
+        other pointer keeps going forward till a repeat occurs
+        for checking repeats, we can use a set so the check is O(1)
+        '''
 
-        for i in range(len(s)):
-            if s[i] not in s[start_point:i]:
-                temp_str+=s[i]
-                longest=max(longest, len(temp_str))
-            else:
-                start_point=start_point+s[start_point:i].index(s[i])+1
-                temp_str=s[start_point:i+1]
-                
+        longest=0
+        start=end=0
+        hashmap={}
+        while end!=len(s): 
+            while s[end] in hashmap:  
+                del hashmap[s[start]] 
+                start+=1 
+                longest=max(longest, len(hashmap)) 
+            hashmap[s[end]]=end 
+            longest=max(longest, len(hashmap))
+            end+=1 
         return longest
