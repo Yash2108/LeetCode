@@ -3,17 +3,18 @@ class Solution:
         triplets=set()
         nums=sorted(nums)
 
-        for left in range(len(nums)-1):
-            occurred=set()
-
-            for right in range(left+1, len(nums)):
-
-                remainder=-nums[left]-nums[right]
-                
-                if remainder in occurred:
-                    new_triplet=(nums[left], remainder, nums[right])
-                    triplets.add(new_triplet)
+        for idx_num1 in range(len(nums)-2):
+            left = idx_num1+1
+            right = len(nums)-1
+            while left<right :
+                if nums[idx_num1]+nums[left]+nums[right]==0:
+                    triplets.add((nums[idx_num1],nums[left],nums[right]))
+                    right-=1
+                elif nums[idx_num1]+nums[left]+nums[right]<0:
+                    left+=1
+                    while nums[left]==nums[left-1] and left<right:
+                        left+=1
                 else:
-                    occurred.add(nums[right])
-
+                    right-=1
+        
         return list([list(i) for i in triplets])
