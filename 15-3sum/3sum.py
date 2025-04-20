@@ -1,28 +1,19 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         triplets=set()
-        nums = sorted(nums)
+        nums=sorted(nums)
 
-        for idx, num in enumerate(nums):
+        for left in range(len(nums)-1):
+            occurred=set()
 
-            left = idx+1
-            right = len(nums)-1
+            for right in range(left+1, len(nums)):
 
-            if num > 0:
-                continue
-
-            if idx > 0 and num == nums[idx-1]:
-                continue
-            
-            while left<right:
-                if nums[left]+nums[right]+num==0:
-                    triplets.add((nums[left],nums[right],num))
-                    left+=1
-                    right-=1
-                    while nums[left] == nums[left-1] and left<right:
-                        left+=1
-                elif nums[left]+nums[right]+num<0:
-                    left+=1
+                remainder=-nums[left]-nums[right]
+                
+                if remainder in occurred:
+                    new_triplet=(nums[left], remainder, nums[right])
+                    triplets.add(new_triplet)
                 else:
-                    right-=1
-        return list(triplets)
+                    occurred.add(nums[right])
+
+        return list([list(i) for i in triplets])
