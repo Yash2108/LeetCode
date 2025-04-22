@@ -17,7 +17,6 @@ class Solution:
         heapify(freq)
 
         result=''
-        print(freq)
         last_used=None
 
         while freq: 
@@ -33,5 +32,5 @@ class Solution:
         
         if last_used[0]<0:
             return ''
-            
+
         return result
