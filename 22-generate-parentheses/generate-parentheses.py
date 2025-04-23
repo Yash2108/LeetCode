@@ -8,14 +8,14 @@ class Solution:
 
         result=[]
 
-        def dfs(paranthesis, open, close):
+        def backtrack(paranthesis, open, close):
             if len(paranthesis)==2*n:
                 if open==close:
                     result.append(paranthesis)
                 return
-            dfs(paranthesis+'(', open+1, close)
+            backtrack(paranthesis+'(', open+1, close)
             if open>close:
-                dfs(paranthesis+')', open, close+1)
+                backtrack(paranthesis+')', open, close+1)
             return
-        dfs('', 0, 0)
+        backtrack('', 0, 0)
         return result
