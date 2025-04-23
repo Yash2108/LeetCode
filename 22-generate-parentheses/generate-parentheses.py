@@ -1,18 +1,21 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        combinations=[]
+        '''
+        each position can have either open or close brackets
+        close brackets are only valid if open>close
+        total len of each string=2n
+        '''
 
-        def backtrack(num_open = 0, num_close = 0, stack=""):
-            if num_open == num_close == n:
-                combinations.append(stack)
+        result=[]
+
+        def dfs(paranthesis, open, close):
+            if len(paranthesis)==2*n:
+                if open==close:
+                    result.append(paranthesis)
                 return
-            
-            if num_open < n:
-                backtrack(num_open+1, num_close, stack+"(")
-            
-            if num_close < num_open:
-                backtrack(num_open, num_close+1, stack+")")
-        
-        backtrack()
-
-        return combinations
+            dfs(paranthesis+'(', open+1, close)
+            if open>close:
+                dfs(paranthesis+')', open, close+1)
+            return
+        dfs('', 0, 0)
+        return result
