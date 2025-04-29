@@ -26,4 +26,3 @@ class Solution:
                     bfs(i, j)
                     islands+=1
         return islands
-
