@@ -1,28 +1,42 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid:
-            return 0
-        islands=0
-        visited=set()
-        directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+        '''
+        we have nxn grid
+        1 is land
+        0 is water
+        we can start at lets say 0,0
+        do bfs
+        have a counter to count num of islands
+        add all the elements in neighboring slots with 1 as visited and rest as seen
+        when no more neighbors to be visited, we stop and increment our counter 
+        '''
 
-        def bfs(row, col):
+        num_of_islands = 0
+        seen = set()
+        directions = [
+            [1, 0], [-1, 0], [0, -1], [0, 1]
+        ]
 
-            q=[]
-            visited.add((row, col))
-            q.append([row, col])
-            while q:
-                r, c = q.pop(0)
-                for dx, dy in directions:
-                    new_r, new_c = r+dx, c+dy
-                    if 0<=new_r<len(grid) and 0<=new_c<len(grid[0]) and\
-                        grid[new_r][new_c]=="1" and (new_r, new_c) not in visited:
-                        visited.add((new_r, new_c))
-                        q.append([new_r, new_c])
-        
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
-                if grid[i][j]=="1" and (i, j) not in visited: 
-                    bfs(i, j)
-                    islands+=1
-        return islands
+        def bfs(row, column):
+            to_visit = [ [ row, column ] ]
+            seen.add( ( row, column ) )
+            while to_visit:
+                current_r, current_c = to_visit.pop(0)
+                for dr, dc in directions:
+                    new_row = current_r + dr
+                    new_col = current_c + dc
+
+                    if 0 <= new_row < len(grid) and 0 <= new_col < len(grid[0]) and \
+                        grid[ new_row ][ new_col ] == "1" and \
+                        ( new_row, new_col ) not in seen :
+
+                        to_visit.append( [ new_row, new_col ] )
+                        seen.add( ( new_row, new_col ) )
+
+        for row in range( len( grid ) ):
+            for column in range( len( grid[0] ) ):
+                if ( row, column ) not in seen and grid[row][column]=="1":
+                    bfs(row, column)
+                    num_of_islands += 1
+
+        return num_of_islands
