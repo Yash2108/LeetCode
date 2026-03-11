@@ -1,8 +1,9 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        mapping={}
+        numbers = {}
         for num in nums:
-            if num in mapping:
+            if num not in numbers:
+                numbers[num]=True
+            else: 
                 return True
-            mapping[num]=num
         return False
