@@ -1,16 +1,13 @@
 from heapq import heapify, heappush, heappop
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        count_freq = Counter(nums)
-        freq_buckets = [[] for _ in range(len(nums)) ]
-
-        for num, freq in count_freq.items():
-            freq_buckets[freq-1].append(num)
-
-        result=[]
-
-        for bucket in freq_buckets[::-1]:
-            for num in bucket:
-                result.append(num)
-                if len(result)==k:
-                    return result
+        num_count={}
+        for num in nums:
+            if num in num_count:
+                num_count[num]+=1
+            else:
+                num_count[num]=1
+        num_count_ls = list(num_count.items())
+        num_count_ls = sorted(num_count_ls, key= lambda k:k[1])
+        output = [num for num, cnt in num_count_ls]
+        return output[-k:]
