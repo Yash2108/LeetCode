@@ -1,12 +1,6 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s=s.lower()
-        s=''.join(i for i in s if i in 'abcdefghijklmonpqrstuvwxyz0123456789')
+        cleaned_s = ''.join([character for character in s if character.isalnum() ]).lower()
+        reverse_s = cleaned_s[::-1]
 
-        left, right = 0, len(s)-1
-        while left<=right:
-            if s[left]!=s[right]:
-                return False
-            left+=1
-            right-=1
-        return True
+        return cleaned_s == reverse_s
